@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relecloud Moon Booking</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <h1>Relecloud Moon Booking</h1>
+    <p>Забронюйте унікальну подорож на Місяць з Relecloud.</p>
+    <div class="row">
+      <div>
+        <label for="name">Ім'я</label>
+        <input id="name" type="text" v-model="booking.name" placeholder="Ваше ім'я" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" v-model="booking.email" placeholder="example@mail.com" />
+      </div>
+    </div>
+    <label for="package">Пакет</label>
+    <select id="package" v-model="booking.package">
+      <option value="Легкий">Легкий</option>
+      <option value="Стандартний">Стандартний</option>
+      <option value="Преміум">Преміум</option>
+    </select>
+    <div class="row">
+      <div>
+        <label for="travelers">Кількість мандрівників</label>
+        <input id="travelers" type="number" min="1" v-model.number="booking.travelers" />
+      </div>
+      <div>
+        <label for="date">Дата старту</label>
+        <input id="date" type="date" v-model="booking.date" />
+      </div>
+    </div>
+    <button @click="confirmBooking">Підтвердити бронь</button>
+    <div class="summary" v-if="confirmed">
+      <h2>Ваша бронь</h2>
+      <p><strong>Пасажир:</strong> {{ booking.name }}</p>
+      <p><strong>Email:</strong> {{ booking.email }}</p>
+      <p><strong>Пакет:</strong> {{ booking.package }}</p>
+      <p><strong>Мандрівників:</strong> {{ booking.travelers }}</p>
+      <p><strong>Дата:</strong> {{ booking.date }}</p>
+      <p><strong>Ціна:</strong> {{ totalPrice }} USD</p>
+    </div>
+  </div>
+  <script src="app.js"></script>
+  </script>
+</body>
+</html>
